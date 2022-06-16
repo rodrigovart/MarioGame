@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
     <title>Mario Game</title>
 </head>
+
 <body>
     <section class="game-board">
-        <img src="/assets/pipe.png" class="pipe" alt="pipe">
+        <img src="/assets/pipe.png" class="pipe active" alt="pipe">
         <img src="/assets/mario.gif" class="mario" alt="mario">
         <img src="/assets/clouds.png" class="clouds" alt="clouds">
         <img src="/assets/game-over.png" class="game-over" alt="game-over">
+        <span class="restart" alt="Restart"><i class="fa-solid fa-arrow-rotate-right"></i></span>
+        <span class="score">100</span>
     </section>
 </body>
 <script src="/js/script.js"></script>
+
 </html>

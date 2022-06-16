@@ -20,6 +20,9 @@
     position: absolute;
     bottom: 70px;
     width: 80px;
+}
+
+.pipe.active {
     animation: pipe-slide 1.0s infinite linear;
 }
 
@@ -34,9 +37,16 @@
 }
 
 .mario {
-    width: 130px;
     position: absolute;
     bottom: 70px;
+    width: 130px;
+    content: url("/assets/mario.gif");
+}
+
+.mario.active {
+    width: 60px;
+    margin-left: 40px;
+    content: url("/assets/mario-game-over.png");
 }
 
 .jump {
@@ -83,6 +93,45 @@
 
 .game-over {
     position: absolute;
-    display: none;
+    margin: auto;
     width: 30%;
+    right: 0;
+    left: 0;
+    display: none !important;
+}
+
+.game-over.active {
+    display: flex !important;
+}
+
+.restart {
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    width: 50%;
+    bottom: 220px;
+    justify-content: center;
+    display: none !important;
+}
+
+.fa-solid {
+    font-size: 3em;
+    color: #64dd17;
+    cursor: pointer;
+}
+
+.fa-solid:hover {
+    color: #1faa00;
+}
+
+.restart.active {
+    display: flex !important;
+}
+
+.score {
+    position: absolute;
+    right: 0;
+    font-size: 1.5em;
+    color: #29434e;
 }
