@@ -10,7 +10,7 @@
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    background-image: url('../game/assets/background-without-mario.jpeg');
+    background-image: url('../assets/background-without-mario.jpeg');
     background-repeat: no-repeat, repeat;
     background-size: cover;
     background-position: center;
@@ -40,13 +40,13 @@
     position: absolute;
     bottom: 70px;
     width: 130px;
-    content: url("../game/assets/mario.gif");
+    content: url("../assets/mario.gif");
 }
 
 .mario.active {
     width: 60px;
     margin-left: 40px;
-    content: url("../game/assets/mario-game-over.png");
+    content: url("../assets/mario-game-over.png");
 }
 
 .jump {
