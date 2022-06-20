@@ -4,8 +4,8 @@ const game_over = document.querySelector('.game-over')
 const arrow_restart_span = document.querySelector('.restart')
 const arrow_restart = document.querySelector('.fa-solid')
 const score_span = document.querySelector('.score')
-const jumpSound = new Audio('/game/assets/sound/mario_jump.wav')
-const deadSound = new Audio('/game/assets/sound/mario_dead.wav')
+const jumpSound = new Audio('../game/assets/sound/mario_jump.wav')
+const deadSound = new Audio('../game/assets/sound/mario_dead.wav')
 
 const PIPE_POSITION_PX = 115
 const MARIO_POSITION_PX = 180
