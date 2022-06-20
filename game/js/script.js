@@ -15,6 +15,14 @@ let interval = initGame()
 let player_score = 0
 
 document.addEventListener('keypress', (e) => {
+    jump()
+})
+
+document.addEventListener('touchstart', (e) => {
+    jump()
+})
+
+function jump() {
     if (mario.classList[1]) {
         return false
     }
@@ -27,7 +35,7 @@ document.addEventListener('keypress', (e) => {
         mario.classList.toggle('jump')
         clearTimeout(timeout)
     }, 500)
-})
+}
 
 function initGame() {
     return setInterval(() => {

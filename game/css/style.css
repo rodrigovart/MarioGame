@@ -23,7 +23,7 @@
 }
 
 .pipe.active {
-    animation: pipe-slide 1.0s infinite linear;
+    animation: pipe-slide 1.1s infinite linear;
 }
 
 @keyframes pipe-slide {
