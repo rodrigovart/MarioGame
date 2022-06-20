@@ -4,6 +4,8 @@ const game_over = document.querySelector('.game-over')
 const arrow_restart_span = document.querySelector('.restart')
 const arrow_restart = document.querySelector('.fa-solid')
 const score_span = document.querySelector('.score')
+const jumpSound = new Audio('assets/sound/mario_jump.wav')
+const deadSound = new Audio('assets/sound/mario_dead.wav')
 
 const PIPE_POSITION_PX = 115
 const MARIO_POSITION_PX = 180
@@ -18,6 +20,8 @@ document.addEventListener('keypress', (e) => {
     }
 
     mario.classList.toggle('jump')
+
+    jumpSound.play()
 
     let timeout = setTimeout(() => {
         mario.classList.toggle('jump')
@@ -42,13 +46,17 @@ function initGame() {
 function score(stop = false) {
     if (!stop) {
         player_score += 1
-        score_span.innerHTML = player_score.toFixed(0)
+        score_span.innerHTML = `Score: ${player_score.toFixed(0)}`
     } else {
         player_score = 0
     }
 }
 
 function gameOver(pipePosition, marioPosition) {
+    jumpSound.pause()
+
+    deadSound.play()
+
     pipe.classList.toggle('active')
     pipe.style.left = `${pipePosition}px`
     mario.style.bottom = `${marioPosition}px`
