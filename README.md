@@ -8,5 +8,5 @@
 ### Forma de Jogar
 Pode ser jogado atraves desse link:
 ````link
-https://rodrigovart.github.io/MarioGame/
+https://rodrigovart.github.io/MarioGame/game
 ````
