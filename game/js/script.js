@@ -7,8 +7,8 @@ const score_span = document.querySelector('.score')
 const jumpSound = new Audio('../game/assets/sound/mario_jump.wav')
 const deadSound = new Audio('../game/assets/sound/mario_dead.wav')
 
-const PIPE_POSITION_PX = 115
-const MARIO_POSITION_PX = 180
+const PIPE_POSITION_PX = 100
+const MARIO_POSITION_PX = 150
 const MARIO_BOTTOM_PX = `70px`
 
 let interval = initGame()
@@ -23,32 +23,30 @@ document.addEventListener('touchstart', (e) => {
 })
 
 function jump() {
-    if (mario.classList[1]) {
-        return false
+    if (mario.classList.contains('jump')) {
+        return;
     }
 
-    mario.classList.toggle('jump')
+    mario.classList.add('jump');
+    jumpSound.play();
 
-    jumpSound.play()
-
-    let timeout = setTimeout(() => {
-        mario.classList.toggle('jump')
-        clearTimeout(timeout)
-    }, 500)
+    setTimeout(() => {
+        mario.classList.remove('jump');
+    }, 600);
 }
 
 function initGame() {
     return setInterval(() => {
-        let pipePosition = pipe.offsetLeft
-        let marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '')
+        const pipePosition = pipe.offsetLeft;
+        const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
 
-        score()
-
-        if (pipePosition <= PIPE_POSITION_PX && pipePosition > 0 && marioPosition < MARIO_POSITION_PX) {
-            gameOver(pipePosition, marioPosition)
-            clearInterval(interval)
+        score();
+        
+        if (pipePosition <= 100 && pipePosition > 0 && marioPosition < 150) {
+            gameOver(pipePosition, marioPosition);
+            clearInterval(interval);
         }
-    }, 10)
+    }, 10);
 }
 
 function score(stop = false) {
