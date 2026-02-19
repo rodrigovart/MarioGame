@@ -41,6 +41,7 @@
     bottom: 70px;
     width: 130px;
     content: url("../assets/mario.gif");
+    transition: bottom 0.1s; 
 }
 
 .mario.active {
@@ -50,26 +51,22 @@
 }
 
 .jump {
-    animation: mario-jump 500ms infinite ease-out;
+    animation: mario-jump 600ms ease-out; 
 }
 
 @keyframes mario-jump {
     0% {
         bottom: 70px;
     }
-
-    40% {
-        bottom: 200px;
+    
+    30% {
+        bottom: 250px; 
     }
-
-    50% {
-        bottom: 200px;
+    
+    50%, 70% {
+        bottom: 280px; 
     }
-
-    60% {
-        bottom: 200px;
-    }
-
+    
     100% {
         bottom: 70px;
     }
