@@ -13,8 +13,9 @@ const MARIO_BOTTOM_PX = `70px`
 
 let interval = initGame()
 let player_score = 0
+let gameSpeed = 1.5
 
-document.addEventListener('keypress', (e) => {
+document.addEventListener('keydown', (e) => {
     jump()
 })
 
@@ -23,24 +24,25 @@ document.addEventListener('touchstart', (e) => {
 })
 
 function jump() {
-    if (mario.classList.contains('jump')) {
-        return
-    }
-
+    if (mario.classList.contains('jump')) return
+    
     mario.classList.add('jump')
     jumpSound.play()
-    
+
     setTimeout(() => {
         mario.classList.remove('jump')
     }, 500)
 }
 
 function initGame() {
+    gameSpeed = 1.5
+    pipe.style.animationDuration = `${gameSpeed}s`
+    
     return setInterval(() => {
         const pipePosition = pipe.offsetLeft
         const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '')
 
-        score()
+        updateScore()
 
         if (pipePosition <= 100 && pipePosition > 0 && marioPosition < 150) {
             gameOver(pipePosition, marioPosition)
@@ -48,40 +50,34 @@ function initGame() {
         }
     }, 10)
 }
-function score(stop = false) {
-    if (!stop) {
-        player_score += 1
-        score_span.innerHTML = `Score: ${player_score.toFixed(0)}`
-    } else {
-        player_score = 0
+
+function updateScore() {
+    player_score += 1
+    score_span.innerHTML = `Score: ${Math.floor(player_score / 10)}`
+
+    if (player_score % 500 === 0 && gameSpeed > 0.6) {
+        gameSpeed -= 0.1 // Diminui o tempo da animação (fica mais rápido)
+        pipe.style.animationDuration = `${gameSpeed}s`
     }
 }
 
 function gameOver(pipePosition, marioPosition) {
     jumpSound.pause()
-
     deadSound.play()
 
-    pipe.classList.toggle('active')
+    pipe.style.animation = 'none'
     pipe.style.left = `${pipePosition}px`
+
+    mario.style.animation = 'none'
     mario.style.bottom = `${marioPosition}px`
-    mario.classList.toggle('active')
-    game_over.classList.toggle('active')
-    arrow_restart_span.classList.toggle('active')
-
-    score(true)
+    
+    mario.classList.add('active')
+    game_over.classList.add('active')
+    arrow_restart_span.classList.add('active')
 }
-
-arrow_restart.addEventListener('click', (e) => {
-    restartGame()
-})
 
 function restartGame() {
-    pipe.style.removeProperty('left')
-    pipe.classList.toggle('active')
-    mario.classList.toggle('active')
-    mario.style.bottom = MARIO_BOTTOM_PX
-    game_over.classList.toggle('active')
-    arrow_restart_span.classList.toggle('active')
-    interval = initGame()
+    location.reload()
 }
+
+arrow_restart.addEventListener('click', restartGame)
