@@ -51,20 +51,16 @@
 }
 
 .jump {
-    animation: mario-jump 600ms ease-out; 
+    animation: mario-jump 500ms ease-out; 
 }
 
 @keyframes mario-jump {
     0% {
         bottom: 70px;
     }
-    
-    30% {
-        bottom: 250px; 
-    }
-    
-    50%, 70% {
-        bottom: 280px; 
+   
+    40%, 60% {
+        bottom: 180px; 
     }
     
     100% {
