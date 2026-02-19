@@ -24,31 +24,30 @@ document.addEventListener('touchstart', (e) => {
 
 function jump() {
     if (mario.classList.contains('jump')) {
-        return;
+        return
     }
 
-    mario.classList.add('jump');
-    jumpSound.play();
-
+    mario.classList.add('jump')
+    jumpSound.play()
+    
     setTimeout(() => {
-        mario.classList.remove('jump');
-    }, 600);
+        mario.classList.remove('jump')
+    }, 500)
 }
 
 function initGame() {
     return setInterval(() => {
-        const pipePosition = pipe.offsetLeft;
-        const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+        const pipePosition = pipe.offsetLeft
+        const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '')
 
-        score();
-        
+        score()
+
         if (pipePosition <= 100 && pipePosition > 0 && marioPosition < 150) {
-            gameOver(pipePosition, marioPosition);
-            clearInterval(interval);
+            gameOver(pipePosition, marioPosition)
+            clearInterval(interval)
         }
-    }, 10);
+    }, 10)
 }
-
 function score(stop = false) {
     if (!stop) {
         player_score += 1
