@@ -9,16 +9,16 @@ const deadSound = new Audio('../game/assets/sound/mario_dead.wav')
 
 const PIPE_POSITION_PX = 100
 const MARIO_POSITION_PX = 150
-const MARIO_BOTTOM_PX = `70px`
+const MARIO_BOTTOM_PX = '70px'
 
-let interval = initGame()
 let player_score = 0
 let gameSpeed = 1.5
+let interval
+
+interval = initGame()
 
 document.addEventListener('keydown', (e) => {
-    if(e.code === 'Space' || e.key === 'ArrowUp') {
-       jump()
-    }
+    jump()
 })
 
 document.addEventListener('touchstart', (e) => {
@@ -38,7 +38,8 @@ function jump() {
 
 function initGame() {
     gameSpeed = 1.5
-    pipe.style.animationDuration = `${gameSpeed}s`
+    
+    if (pipe) pipe.style.animationDuration = `${gameSpeed}s`
     
     return setInterval(() => {
         const pipePosition = pipe.offsetLeft
@@ -46,7 +47,7 @@ function initGame() {
 
         updateScore()
 
-        if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 150) {
+        if (pipePosition <= 100 && pipePosition > 0 && marioPosition < 150) {
             gameOver(pipePosition, marioPosition)
             clearInterval(interval)
         }
@@ -58,8 +59,9 @@ function updateScore() {
     score_span.innerHTML = `Score: ${Math.floor(player_score / 10)}`
 
     if (player_score % 500 === 0 && gameSpeed > 0.6) {
-        gameSpeed -= 0.1 // Diminui o tempo da animação (fica mais rápido)
+        gameSpeed -= 0.1
         pipe.style.animationDuration = `${gameSpeed}s`
+        console.log(`Velocidade atual: ${gameSpeed}s`)
     }
 }
 
