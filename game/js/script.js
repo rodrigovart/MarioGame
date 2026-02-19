@@ -16,7 +16,9 @@ let player_score = 0
 let gameSpeed = 1.5
 
 document.addEventListener('keydown', (e) => {
-    jump()
+    if(e.code === 'Space' || e.key === 'ArrowUp') {
+       jump()
+    }
 })
 
 document.addEventListener('touchstart', (e) => {
@@ -44,7 +46,7 @@ function initGame() {
 
         updateScore()
 
-        if (pipePosition <= 100 && pipePosition > 0 && marioPosition < 150) {
+        if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 150) {
             gameOver(pipePosition, marioPosition)
             clearInterval(interval)
         }
