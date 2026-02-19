@@ -41,7 +41,6 @@
     bottom: 70px;
     width: 130px;
     content: url("../assets/mario.gif");
-    transition: bottom 0.1s; 
 }
 
 .mario.active {
